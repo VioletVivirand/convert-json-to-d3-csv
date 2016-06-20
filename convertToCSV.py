@@ -4,11 +4,12 @@ import demjson
 import sys
 import os
 
-# Tree Structure
+# Create basic tree structure
 header = '"id","value"'
 result = []
 path = []
 
+# The main convertion function
 def recognize(obj):
     if isinstance(obj, list):
         for k in range(len(obj)):
@@ -27,7 +28,7 @@ def recognize(obj):
 
 
 def main():
-    # File Spec
+    # Parse file spec
     file = sys.argv[1]
     filename = sys.argv[1].split('/')[-1].replace('.json','')
     
@@ -45,7 +46,7 @@ def main():
     recognize(jsondoc)
     result.insert(0, header)
 
-    # Write File
+    # Write file
     ## Create "output" folder if no exists
     if not os.path.exists(os.path.dirname('./output/')):
         try:
